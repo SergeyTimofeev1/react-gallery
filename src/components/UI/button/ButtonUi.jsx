@@ -1,9 +1,9 @@
 import React from 'react';
 import cl from './ButtonUi.module.css'
 
-const ButtonUi = ({ children }) => {
+const ButtonUi = ({ children, ...props }) => {
   return (
-    <button className={cl.navbar__button}>
+    <button className={cl.navbar__button} {...props}>
       {children}
     </button>
   );
