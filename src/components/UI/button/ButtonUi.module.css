@@ -1,0 +1,7 @@
+.navbar__button {
+  background: transparent;
+  border: 1px solid blueviolet;
+  border-radius: .5rem;
+  padding: 0.2rem 0.7rem;
+  cursor: pointer;
+}
