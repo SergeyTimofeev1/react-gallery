@@ -3,6 +3,7 @@ import Navbar from './components/UI/navbar/NavbarUi';
 import Gallery from './components/gallery/Gallery';
 import { useState } from 'react';
 import GalleryService from './components/service/GalleryService';
+ import { BrowserRouter } from 'react-router-dom'
 
 function App() {
 
@@ -10,15 +11,17 @@ function App() {
 
   async function fetchGalleryItems() {
     const response = await GalleryService.getAll()
-    setGalleryItems([...galleyItems,...response.data])
-    console.log('clicked');
+    setGalleryItems([...galleyItems, ...response.data])
   }
 
+
   return (
-    <div className="App">
-      <Navbar getItems={fetchGalleryItems}/>
-      <Gallery items={galleyItems}/>
-    </div>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar getItems={fetchGalleryItems}/>
+          <Gallery items={galleyItems}/>
+        </div>
+      </BrowserRouter>
   );
 }
 

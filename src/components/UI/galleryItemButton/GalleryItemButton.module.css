@@ -1,0 +1,11 @@
+.galleryButton {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.galleryButton span {
+  pointer-events: none;
+}

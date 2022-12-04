@@ -1,7 +1,26 @@
 .gallery-item {
-  width: 100%;
+  width: 20rem;
   border: 1px solid purple;
   padding: 0.2rem 0.6rem;
-  margin-bottom: 1rem;
+  margin: 1rem auto;
   text-align: center;
 }
+
+.gallery-item__header {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2%;
+  justify-content: flex-end;
+}
+
+/* .gallery-item__btn {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.gallery-item__btn.like.active {
+  color: red;
+} */
