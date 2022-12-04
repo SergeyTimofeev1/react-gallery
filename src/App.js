@@ -1,9 +1,12 @@
 import './App.css';
 import Navbar from './components/UI/navbar/NavbarUi';
-import Gallery from './components/gallery/Gallery';
+import Gallery from './pages/gallery/Gallery';
 import { useState } from 'react';
-import GalleryService from './components/service/GalleryService';
- import { BrowserRouter } from 'react-router-dom'
+import GalleryService from './service/GalleryService';
+import MainPage from './pages/main/MainPage';
+import { Routes, Route, Link } from 'react-router-dom'
+import PresonalGallery from './pages/personalGallery/PresonalGallery';
+
 
 function App() {
 
@@ -16,12 +19,15 @@ function App() {
 
 
   return (
-      <BrowserRouter>
-        <div className="App">
-          <Navbar getItems={fetchGalleryItems}/>
-          <Gallery items={galleyItems}/>
-        </div>
-      </BrowserRouter>
+    <div className="App">
+      <Navbar getItems={fetchGalleryItems}/>
+      <Routes>
+        <Route path='/main-page' element={<MainPage/>}/>
+        <Route path='/gallery' element={<Gallery items={galleyItems}/>}/>
+        <Route path='/personal-gallery' element={<PresonalGallery/>}/>
+      </Routes>
+          
+    </div>
   );
 }
 

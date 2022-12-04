@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import GalleryItem from '../galleryItem/GalleryItem';
+import GalleryItem from '../../components/galleryItem/GalleryItem';
 import cl from './Gallery.module.css'
 
 const Gallery = ({ items }) => {
@@ -13,8 +13,6 @@ const Gallery = ({ items }) => {
   const removeLikedItem = (item) => {
     setLikedItem(likedItems.filter(i => i.id !== item.id))
   }
-
-  console.log(likedItems);
 
   return (
     <div className={cl.gallery}>
