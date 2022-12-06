@@ -4,14 +4,14 @@ import cl from './NavbarUi.module.css'
 import { Link } from 'react-router-dom'
 
 
-const Navbar = ({ getItems, ...props }) => {
+const Navbar = ({ ...props }) => {
 
   return (
     <div className={cl.navbar} {...props}>
       <ButtonUi>
         <Link to='/main-page'>Главная</Link>
       </ButtonUi>
-      <ButtonUi onClick={getItems}>
+      <ButtonUi>
         <Link to='/gallery'>Галерея</Link>
       </ButtonUi>
       <ButtonUi>

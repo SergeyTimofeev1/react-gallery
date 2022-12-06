@@ -4,6 +4,7 @@
   padding: 0.2rem 0.6rem;
   margin: 1rem auto;
   text-align: center;
+  height: 300px;
 }
 
 .gallery-item__header {
@@ -14,13 +15,6 @@
   justify-content: flex-end;
 }
 
-/* .gallery-item__btn {
-  background: transparent;
-  outline: none;
-  border: none;
-  cursor: pointer;
+.gallery-item__img {
+  /* width: 100%; */
 }
-
-.gallery-item__btn.like.active {
-  color: red;
-} */

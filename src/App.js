@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './components/UI/navbar/NavbarUi';
 import Gallery from './pages/gallery/Gallery';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import GalleryService from './service/GalleryService';
 import MainPage from './pages/main/MainPage';
 import { Routes, Route, Link } from 'react-router-dom'
@@ -10,21 +10,60 @@ import PresonalGallery from './pages/personalGallery/PresonalGallery';
 
 function App() {
 
-  const [galleyItems, setGalleryItems] = useState([])
+  const [galleryItems, setGalleryItems] = useState([])
+  const [likedItems, setLikedItem] = useState([]);
 
   async function fetchGalleryItems() {
     const response = await GalleryService.getAll()
-    setGalleryItems([...galleyItems, ...response.data])
+    setGalleryItems([...galleryItems, ...response.data])
   }
+
+  const getLikedItem = (newLikedItem) => {
+    setLikedItem([...likedItems, newLikedItem])
+  }
+
+  const removeLikedItem = (item) => {
+    setLikedItem(likedItems.filter(i => i.id !== item.id))
+  }
+  
+  const removeGalleryItem = (item) => {
+    setGalleryItems(galleryItems.filter(i => i.id !== item.id))
+  }
+
+  console.log(likedItems);
+
+  useEffect(() => {
+    fetchGalleryItems()
+    console.log('effect');
+  }, []);
 
 
   return (
     <div className="App">
-      <Navbar getItems={fetchGalleryItems}/>
+      <Navbar/>
       <Routes>
         <Route path='/main-page' element={<MainPage/>}/>
-        <Route path='/gallery' element={<Gallery items={galleyItems}/>}/>
-        <Route path='/personal-gallery' element={<PresonalGallery/>}/>
+        <Route 
+          path='/gallery' 
+          element=
+          {
+            <Gallery 
+              items={galleryItems}
+              getLikedItem={getLikedItem}
+              removeLikedItem={removeLikedItem}
+              removeGalleryItem={removeGalleryItem}
+            />
+          }
+        />
+        <Route 
+          path='/personal-gallery' 
+          element=
+          {
+            <PresonalGallery 
+              likedItems={likedItems}
+            />
+          }
+        />
       </Routes>
           
     </div>

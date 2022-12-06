@@ -2,9 +2,24 @@ import React, { useState } from 'react';
 import './GalleryItem.css'
 import GalleryItemButton from '../UI/galleryItemButton/GalleryItemButton';
 
-const GalleryItem = ({ id, title, url, getLikedItem, removeLikedItem, item }) => {
+const GalleryItem = ({ id, title, url, getLikedItem, removeLikedItem, removeGalleryItem, item }) => {
 
   const [liked, setLiked] = useState(false);
+
+  const setLikeOnItem = (e) => {
+    if (!liked) {
+      getLikedItem(item)
+      setLiked(true)
+      e.target.style.color = 'red'
+      setTimeout(() => {
+        removeGalleryItem(item)
+      }, 300);
+    } else {
+      removeLikedItem(item)
+      setLiked(false)
+      e.target.style.color = 'black'
+    }
+  }
 
   return (
     <div className="gallery-item">
@@ -12,15 +27,7 @@ const GalleryItem = ({ id, title, url, getLikedItem, removeLikedItem, item }) =>
         <div className="gallery-item__header">
           <GalleryItemButton
             onClick={(e) => {
-              if (!liked) {
-                getLikedItem(item)
-                setLiked(true)
-                e.target.style.color = 'red'
-              } else {
-                removeLikedItem(item)
-                setLiked(false)
-                e.target.style.color = 'black'
-              }
+              setLikeOnItem(e)
             }}
           >
             <span className="material-symbols-outlined">

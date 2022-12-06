@@ -5,3 +5,14 @@
   padding: 0.2rem 0.7rem;
   cursor: pointer;
 }
+
+.navbar__button a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 400px) {
+  .navbar__button {
+    font-size: 12px;
+  }
+}
