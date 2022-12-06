@@ -50,7 +50,6 @@ function App() {
             <Gallery 
               items={galleryItems}
               getLikedItem={getLikedItem}
-              removeLikedItem={removeLikedItem}
               removeGalleryItem={removeGalleryItem}
             />
           }
@@ -61,6 +60,7 @@ function App() {
           {
             <PresonalGallery 
               likedItems={likedItems}
+              removeLikedItem={removeLikedItem}
             />
           }
         />

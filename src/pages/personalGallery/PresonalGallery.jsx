@@ -1,22 +1,22 @@
 import React from 'react';
-import GalleryItem from '../../components/galleryItem/GalleryItem';
+import PersonalGalleryItem from '../../components/personalGalleryItem/PersonalGalleryItem';
 import cl from './PresonalGallery.module.css'
 
-const PresonalGallery = ({ likedItems }) => {
+const PresonalGallery = ({ likedItems, removeLikedItem }) => {
   return (
     <div className={cl.gallery}>
       <h1>Личная галерея</h1>
       <div className={cl.gallery__inner}>
         {
           likedItems.map(item =>
-            <GalleryItem
+            <PersonalGalleryItem
               item={item}
               key={item.id + item.title}
               id={item.id}
               title={item.title}
               url={item.thumbnailUrl}
-            // getLikedItem={getLikedItem}
-            // removeLikedItem={removeLikedItem}
+              // getLikedItem={getLikedItem}
+              removeLikedItem={removeLikedItem}
             />
           )
         }
