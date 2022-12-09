@@ -3,7 +3,9 @@ import GalleryItem from '../../components/galleryItem/GalleryItem';
 import GalleryService from '../../service/GalleryService';
 import cl from './Gallery.module.css'
 
-const Gallery = ({ items, getLikedItem, removeLikedItem, removeGalleryItem }) => {
+const Gallery = ({ addItem, removeItem, items }) => {
+
+
 
   return (
     <div className={cl.gallery}>
@@ -14,14 +16,13 @@ const Gallery = ({ items, getLikedItem, removeLikedItem, removeGalleryItem }) =>
             ?
             items.map(item =>
               <GalleryItem
+                addItem={addItem}
+                removeItem={removeItem}
                 item={item}
                 key={item.id + item.title}
                 id={item.id}
                 title={item.title}
                 url={item.thumbnailUrl}
-                getLikedItem={getLikedItem}
-                removeLikedItem={removeLikedItem}
-                removeGalleryItem={removeGalleryItem}
               />
             )
             : <h1>Посты загружаются</h1>

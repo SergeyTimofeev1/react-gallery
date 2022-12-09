@@ -5,6 +5,7 @@
   margin: 1rem auto;
   text-align: center;
   height: 300px;
+  transition: all .5s ease-in;
 }
 
 .gallery-item__header {

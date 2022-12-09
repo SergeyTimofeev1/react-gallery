@@ -2,25 +2,23 @@ import React, { useRef, useState } from 'react';
 import './GalleryItem.css'
 import GalleryItemButton from '../UI/galleryItemButton/GalleryItemButton';
 
-const GalleryItem = ({ id, title, url, getLikedItem, removeLikedItem, removeGalleryItem, item }) => {
+const GalleryItem = ({ id, title, url, addItem, removeItem, item }) => {
 
   const [liked, setLiked] = useState(false);
   const like = useRef()
 
-  const setLikeOnItem = (e) => {
-    if (!liked) {
-      getLikedItem(item)
-      setLiked(true)
-      like.current.style.color = 'red'
-      setTimeout(() => {
-        removeGalleryItem(item)
-      }, 300);
-      console.log(like.current);
-    } else {
-      removeLikedItem(item)
-      setLiked(false)
-      like.current.style.color = 'black'
-    }
+  const addLikedPost = () => {
+    const newLikedItem = item
+    like.current.style.color = 'red'
+    addItem(newLikedItem)
+    setLiked(true)
+  }
+
+  // Удаление лайкнутых постов
+  const removeLikedItem = () => {
+    removeItem(item)
+    setLiked(false)
+    like.current.style.color = 'black'
   }
 
   return (
@@ -28,8 +26,8 @@ const GalleryItem = ({ id, title, url, getLikedItem, removeLikedItem, removeGall
       <div className="gallery-item__wrapper">
         <div className="gallery-item__header">
           <GalleryItemButton
-            onClick={(e) => {
-              setLikeOnItem(e)
+            onClick={() => {
+              liked ? removeLikedItem() : addLikedPost()
             }}
           >
             <span ref={like} className="material-symbols-outlined">

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default class GalleryService {
-  static async getAll(limit = 100) {
+  static async getAll(limit = 6) {
     const response = await axios.get('https://jsonplaceholder.typicode.com/photos', {
       params: {
         _limit: limit
