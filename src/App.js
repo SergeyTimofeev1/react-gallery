@@ -35,7 +35,6 @@ function App() {
     console.log('effect');
   }, []);
  
-
   return (
     <div className="App">
       <Navbar/>
@@ -58,7 +57,6 @@ function App() {
           {
             <PresonalGallery 
               likedItems={likedItems}
-              // removeLikedItem={removeLikedItem}
             />
           }
         />

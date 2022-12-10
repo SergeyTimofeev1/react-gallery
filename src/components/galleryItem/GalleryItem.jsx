@@ -1,24 +1,32 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './GalleryItem.css'
 import GalleryItemButton from '../UI/galleryItemButton/GalleryItemButton';
 
-const GalleryItem = ({ id, title, url, addItem, removeItem, item }) => {
+const GalleryItem = ({ id, title, url, addItem, removeItem, item, colorHeart, isLiked, openModal }) => {
 
   const [liked, setLiked] = useState(false);
   const like = useRef()
 
   const addLikedPost = () => {
     const newLikedItem = item
-    like.current.style.color = 'red'
     addItem(newLikedItem)
     setLiked(true)
+    isLiked = true
+    colorHeart = 'red'
+    like.current.className = 'material-symbols-outlined ' + colorHeart
   }
 
   // Удаление лайкнутых постов
   const removeLikedItem = () => {
     removeItem(item)
     setLiked(false)
-    like.current.style.color = 'black'
+    isLiked = false
+    colorHeart = 'black'
+    like.current.className = 'material-symbols-outlined ' + colorHeart
+  }
+
+  const setModalOpen = () => {
+    openModal(true)
   }
 
   return (
@@ -30,11 +38,20 @@ const GalleryItem = ({ id, title, url, addItem, removeItem, item }) => {
               liked ? removeLikedItem() : addLikedPost()
             }}
           >
-            <span ref={like} className="material-symbols-outlined">
-              heart_plus
-            </span>
+            {
+              !isLiked
+                ?
+                <span ref={like} className={colorHeart + ' material-symbols-outlined'}>
+                  heart_plus
+                </span>
+                :
+                <span ref={like} className={colorHeart + ' material-symbols-outlined'}>
+                  heart_plus
+                </span>
+            }
+
           </GalleryItemButton>
-          <GalleryItemButton>
+          <GalleryItemButton onClick={() => setModalOpen()}>
             <span className="material-symbols-outlined">
               info
             </span>

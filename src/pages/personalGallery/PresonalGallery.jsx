@@ -2,8 +2,7 @@ import React from 'react';
 import GalleryItem from '../../components/galleryItem/GalleryItem';
 import cl from './PresonalGallery.module.css'
 
-const PresonalGallery = ({ likedItems, }) => {
-
+const PresonalGallery = ({ likedItems }) => {
   return (
     <div className={cl.gallery}>
       <h1>Личная галерея</h1>
