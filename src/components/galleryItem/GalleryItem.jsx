@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import './GalleryItem.css'
 import GalleryItemButton from '../UI/galleryItemButton/GalleryItemButton';
 
-const GalleryItem = ({ id, title, url, addItem, removeItem, item, colorHeart, isLiked, openModal }) => {
+const GalleryItem = ({ id, title, url, addItem, removeItem, item, colorHeart, isLiked, openModal, getModalItem }) => {
 
   const [liked, setLiked] = useState(false);
   const like = useRef()
@@ -29,6 +29,10 @@ const GalleryItem = ({ id, title, url, addItem, removeItem, item, colorHeart, is
     openModal(true)
   }
 
+  const getModalInfo = () => {
+    getModalItem(item)
+  }
+
   return (
     <div className="gallery-item">
       <div className="gallery-item__wrapper">
@@ -51,12 +55,16 @@ const GalleryItem = ({ id, title, url, addItem, removeItem, item, colorHeart, is
             }
 
           </GalleryItemButton>
-          <GalleryItemButton onClick={() => setModalOpen()}>
+          <GalleryItemButton>
             <span className="material-symbols-outlined">
               info
             </span>
           </GalleryItemButton>
-          <GalleryItemButton>
+          <GalleryItemButton onClick={() => {
+            setModalOpen()
+            getModalInfo()
+          }
+          }>
             <span className="material-symbols-outlined">
               preview
             </span>
